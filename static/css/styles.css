@@ -1,0 +1,50 @@
+.custom-form {
+    margin:50px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.form {
+    text-align: center;
+}
+
+.control-label {
+    display: none;
+}
+
+
+.todolist {
+      width: 50%;
+      margin: 0 auto;
+      position: fixed;
+    bottom: 200px;
+    left:0px;
+    right:0px;
+
+}
+
+h1 {
+    text-align: center;
+    margin: 50px 0;
+}
+
+
+ul {
+    counter-reset: li;
+    list-style: none;
+    padding:0;
+
+}
+
+li {
+    width:50%;
+    background: #ededed;
+    padding: .4em 1em;
+    margin: .5em auto;
+    color: #1d1d1b;
+    justify-content: space-between;
+    display: flex;
+    border-radius: 30px;
+}
+
