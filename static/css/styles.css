@@ -37,7 +37,7 @@ ul {
 
 }
 
-li {
+.todo-task {
     width:50%;
     background: #ededed;
     padding: .4em 1em;
@@ -48,3 +48,6 @@ li {
     border-radius: 30px;
 }
 
+.fa-trash {
+    padding-top:3px;
+}

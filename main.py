@@ -29,6 +29,7 @@ class AddTodoForm(Form):
 db.create_all()
 
 
+# TODO add scrollbar apres 15 todo dans la liste
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
@@ -53,8 +54,20 @@ def home():
 
         return redirect(url_for('home'))
 
-
     return render_template('index.html', form=form, todos=todos)
+
+
+
+
+
+@app.route("/delete/task/<int:task_id>")
+def delete(task_id):
+    Todo.query.filter_by(id=task_id).delete()
+    db.session.commit()
+
+    flash('Task successfully deleted')
+
+    return redirect(url_for('home'))
 
 
 if __name__ == '__main__':

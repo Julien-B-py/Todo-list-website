@@ -6,6 +6,9 @@
 {% block styles %}
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='css/styles.css')}}">
+<link rel='stylesheet' href="{{ url_for('static', filename='css/all.css')}}">
+
+
 {% endblock %}
 
 {% block content %}
@@ -13,13 +16,14 @@
 
 <h1>My todo list</h1>
 <div class="todolist">
-<ul>
-    {% for todo in todos%}
-    <li>{{ todo.task }} <a href="">delete</a></li>
-    {%- endfor %}
+    <ul>
+        {% for todo in todos%}
+        <li class="todo-task">{{ todo.task }} <a class="fas fa-trash" href="{{ url_for('delete', task_id=todo.id)}}"></a></li>
+        {%- endfor %}
 
-</ul>
+    </ul>
 </div>
+
 
 
 <div class="form">
@@ -28,8 +32,6 @@
 
         {{ form.hidden_tag() }}
         {{ wtf.form_errors(form, hiddens="only") }}
-
-        {{ wtf.form_field(form.task, class="form-style-"+form.task.name, placeholder="Task") }}
 
         {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -40,6 +42,10 @@
         </ul>
         {% endif %}
         {% endwith %}
+
+        {{ wtf.form_field(form.task, class="form-style-"+form.task.name, placeholder="Task") }}
+
+
 
         {{ wtf.form_field(form.submit, class="form-style-"+form.submit.name+" btn btn-primary") }}
 
