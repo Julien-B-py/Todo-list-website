@@ -17,7 +17,6 @@
 
 
 
-
 <div class="test">
     <div class="todolist-global">
         <h1>My todo list</h1>
@@ -30,14 +29,25 @@
 
             {% for todo in todos%}
 
+            {% if not todo.date_completed  %}
 
+            <li class="todo-task">
 
-            <li class="todo-task">{{ todo.task }}
+                <div>
+                    <div class="check-task">
+                        <a class="fas fa-square" href="{{ url_for('complete', task_id=todo.id)}}"></a>
+                    </div>
+
+                    {{ todo.task }}
+                </div>
                 <div >
                     <a class="fas fa-edit task-icon" href="{{ url_for('edit', task_id=todo.id)}}"></a>
                     <a class="fas fa-trash task-icon" href="{{ url_for('delete', task_id=todo.id)}}"></a>
                 </div>
             </li>
+
+            {% endif %}
+
             {% endfor %}
 
         </ul>
