@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Todo list website{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='css/styles.css')}}">
+<link rel='stylesheet' href="{{ url_for('static', filename='css/all.css')}}">
+
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="todolist-global">
+    <h1>Completed tasks</h1>
+    <ul class="todolist">
+
+
+
+        {% for todo in results%}
+
+
+
+        <li class="todo-task">
+
+
+            {{ todo.task }}
+
+            <div class="completed-date">completed on {{ todo.date_completed }}</div>
+
+
+        </li>
+
+
+
+        {% endfor %}
+
+    </ul>
+</div>
+<div class="footer">
+<a href="{{ url_for('home')}}" class="footer-link">Return to home page</a>
+</div>
+
+{% endblock %}

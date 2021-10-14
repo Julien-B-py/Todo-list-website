@@ -109,7 +109,13 @@ p {
 
 .task-icon {
     padding:0 1px;
+
 }
+
+.task-icon:hover {
+    text-decoration: none;
+}
+
 
 .submit-icom {
     padding-left:10px;
@@ -140,9 +146,30 @@ p {
   content:"\f14a";
   color:green;
   opacity:0.4;
+
+}
+
+
+.check-task:hover
+{
+    text-decoration: none;
 }
 
 
 .fa-square {
     padding-right:10px;
+}
+
+.fa-square:hover {
+    text-decoration: none;
+}
+
+
+.footer {
+    margin: 50px 0;
+}
+
+.completed-date {
+      color:green;
+
 }

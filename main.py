@@ -37,9 +37,16 @@ db.create_all()
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
+    completed = False
+
     form = AddTodoForm()
 
     todos = Todo.query.all()
+
+    for todo in todos:
+        if todo.date_completed:
+            completed = True
+            break
 
     if form.validate_on_submit():
         new_task = form.task.data
@@ -60,7 +67,7 @@ def home():
 
         return redirect(url_for('home'))
 
-    return render_template('index.html', form=form, todos=todos)
+    return render_template('index.html', form=form, todos=todos, completed=completed)
 
 
 @app.route("/delete/task/<int:task_id>")
@@ -84,6 +91,18 @@ def complete(task_id):
     flash('Task successfully completed')
 
     return redirect(url_for('home'))
+
+
+@app.route("/completed")
+def get_completed_tasks():
+    results = Todo.query.filter(Todo.date_completed != None)
+
+
+
+
+
+
+    return render_template('completed.html',results=results)
 
 
 @app.route("/edit/task/<int:task_id>", methods=['POST', 'GET'])

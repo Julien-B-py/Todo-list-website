@@ -80,6 +80,11 @@
 
         </form>
     </div>
+
+    {% if completed %}
+    <a href="{{ url_for('get_completed_tasks')}}">See completed tasks</a>
+    {% endif %}
+
 </div>
 
 {% endblock %}
