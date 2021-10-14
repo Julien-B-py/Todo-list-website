@@ -9,48 +9,67 @@
 <link rel='stylesheet' href="{{ url_for('static', filename='css/all.css')}}">
 
 
+
+
 {% endblock %}
 
 {% block content %}
 
 
-<h1>My todo list</h1>
-<div class="todolist">
-    <ul>
-        {% for todo in todos%}
-        <li class="todo-task">{{ todo.task }} <a class="fas fa-trash" href="{{ url_for('delete', task_id=todo.id)}}"></a></li>
-        {%- endfor %}
-
-    </ul>
-</div>
 
 
+<div class="test">
+    <div class="todolist-global">
+        <h1>My todo list</h1>
+        <ul class="todolist">
 
-<div class="form">
-    <form class="form form-horizontal custom-form" method="post" role="form">
+            {% if not todos  %}
+            <p>Your todo list is empty.</p>
+            {% endif %}
 
 
-        {{ form.hidden_tag() }}
-        {{ wtf.form_errors(form, hiddens="only") }}
+            {% for todo in todos%}
 
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class=flashes>
-            {% for message in messages %}
-            <li>{{ message }}</li>
+
+
+            <li class="todo-task">{{ todo.task }}
+                <div >
+                    <a class="fas fa-edit task-icon" href="{{ url_for('edit', task_id=todo.id)}}"></a>
+                    <a class="fas fa-trash task-icon" href="{{ url_for('delete', task_id=todo.id)}}"></a>
+                </div>
+            </li>
             {% endfor %}
+
         </ul>
-        {% endif %}
-        {% endwith %}
-
-        {{ wtf.form_field(form.task, class="form-style-"+form.task.name, placeholder="Task") }}
+    </div>
 
 
 
-        {{ wtf.form_field(form.submit, class="form-style-"+form.submit.name+" btn btn-primary") }}
+    <div class="form">
+        <form class="form form-horizontal custom-form" method="post" role="form">
+
+
+            {{ form.hidden_tag() }}
+            {{ wtf.form_errors(form, hiddens="only") }}
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class=flashes>
+                {% for message in messages %}
+                <p class="flash-message">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            {{ wtf.form_field(form.task, class="form-style-"+form.task.name, placeholder="Task") }}
+
+            <button type="submit" class="btn btn-primary">Add task<i class="fas fa-check submit-icom"></i></button>
 
 
 
-    </form>
+        </form>
+    </div>
 </div>
+
 {% endblock %}

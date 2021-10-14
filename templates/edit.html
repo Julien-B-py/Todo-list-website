@@ -1,0 +1,61 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Edit todo{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='css/styles.css')}}">
+<link rel='stylesheet' href="{{ url_for('static', filename='css/all.css')}}">
+
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+<div class="todolist-global">
+    <h1>Edit todo</h1>
+    <ul class="todolist">
+
+
+        <p>Current todo: {{ task }}</p>
+
+
+</div>
+
+
+
+<div class="form">
+    <form class="form form-horizontal custom-form" method="post" role="form">
+
+
+        {{ form.hidden_tag() }}
+        {{ wtf.form_errors(form, hiddens="only") }}
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class=flashes>
+            {% for message in messages %}
+            <p class="flash-message">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {{ wtf.form_field(form.task, class="form-style-"+form.task.name, placeholder="New task") }}
+
+        <button type="submit" class="btn btn-primary">Update todo<i class="fas fa-check submit-icom"></i></button>
+
+
+
+    </form>
+</div>
+
+
+{% endblock %}

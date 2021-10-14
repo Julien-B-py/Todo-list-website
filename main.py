@@ -23,13 +23,14 @@ class Todo(db.Model):
 # render_kw={'autofocus': True} to set the cursor focused in the field
 class AddTodoForm(Form):
     task = StringField(validators=[validators.input_required()], render_kw={'autofocus': True})
-    submit = SubmitField()
 
+
+class EditTodoForm(Form):
+    task = StringField(validators=[validators.input_required()], render_kw={'autofocus': True})
 
 db.create_all()
 
 
-# TODO add scrollbar apres 15 todo dans la liste
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
@@ -46,11 +47,13 @@ def home():
         already_exists = Todo.query.filter_by(task=new_task).first()
 
         if already_exists:
-            flash('Already exists')
+            flash('Task already exists')
             return redirect(url_for('home'))
 
         db.session.add(todo)
         db.session.commit()
+
+        flash('Task successfully added')
 
         return redirect(url_for('home'))
 
@@ -68,6 +71,32 @@ def delete(task_id):
     flash('Task successfully deleted')
 
     return redirect(url_for('home'))
+
+
+@app.route("/edit/task/<int:task_id>", methods=['POST', 'GET'])
+def edit(task_id):
+    form = EditTodoForm()
+
+    todo_to_edit = Todo.query.get(task_id)
+    task_to_edit = todo_to_edit.task
+
+
+    if form.validate_on_submit():
+        new_task = form.task.data
+
+
+        todo_to_edit.task = new_task
+        db.session.commit()
+
+        flash('Task successfully edited')
+
+        return redirect(url_for('home'))
+
+
+    return render_template('edit.html', form=form, task=task_to_edit)
+
+
+# T0DO recherche button, flash on every single action, checkbox for task done and move it to finished task part?
 
 
 if __name__ == '__main__':
