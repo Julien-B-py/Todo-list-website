@@ -9,7 +9,6 @@ from werkzeug.utils import redirect
 from forms import AddTodoForm, EditTodoForm
 
 app = Flask(__name__)
-
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -24,7 +23,7 @@ class Todo(db.Model):
     date_completed = db.Column(db.String(120), nullable=True)
 
 
-# db.create_all()
+#db.create_all()
 
 
 @app.route("/", methods=['POST', 'GET'])
