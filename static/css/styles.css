@@ -6,121 +6,23 @@ body {
 }
 
 h1 {
-    text-align: center;
     margin: 50px 0;
+    text-align: center;
 }
 
 p {
     font-size:20px;
 }
-
-
-
-
+/* HTML TAGS END */
+/* -------------------------------------------------------------------------------------------------------------------*/
+/* CUSTOM FORM */
 .form {
-
-
         margin:3% 0;
-
-
 }
 
+/* Disable text field label in the form display */
 .control-label {
     display: none;
-}
-
-
-
-
-
-
-
-.todolist-global {
-      width: 65%;
-      margin: 0 auto;
-
-/*      position: fixed;
-      top:0;
-
-    left:0px;
-    right:0px;*/
-
-
-
-
-}
-
-
-/* CUSTOM SCROLLBAR */
-
-.todolist::-webkit-scrollbar-track {
-    background-color: #ededed;
-    border-radius: 8px;
-    border: 4px solid transparent;
-    background-clip: padding-box;
-}
-
-
-.todolist::-webkit-scrollbar-thumb {
-  background-color: #337ab7;
-  border: 4px solid transparent;
-  border-radius: 8px;
-  background-clip: padding-box;
-}
-
-.todolist::-webkit-scrollbar {
-  width: 16px;
-}
-
-.todolist {
-  overflow-y: auto;
-  margin: 0 auto;
-  padding: 0 5px;
-  width: 50%;
-  max-height: 550px;
-
-
-  border-radius: 8px;
-
-
-  /* CUSTOM SCROLLBAR FIREFOX */
-  scrollbar-gutter: stable;
-  scrollbar-color: #337ab7 #ededed;
-  scrollbar-width: thin;
-}
-
-
-
-
-
-.todo-task {
-    width:98%;
-    background: #ededed;
-    padding: .4em 1em;
-    margin: .5em auto;
-    color: #1d1d1b;
-    justify-content: space-between;
-    display: flex;
-    border-radius: 30px;
-}
-
-.fa-trash {
-    padding-top:3px;
-}
-
-
-.task-icon {
-    padding:0 1px;
-
-}
-
-.task-icon:hover {
-    text-decoration: none;
-}
-
-
-.submit-icom {
-    padding-left:10px;
 }
 
 .flash-message {
@@ -128,35 +30,90 @@ p {
     font-size:14px;
 }
 
+.submit-icom {
+    padding-left:10px;
+}
+/* CUSTOM FORM END */
+/* -------------------------------------------------------------------------------------------------------------------*/
+/* CUSTOM SCROLLBAR */
+/* Thumb = moving part */
+.todolist::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;
+  background-color: #337ab7;
+}
+
+/* Track = static part  */
+.todolist::-webkit-scrollbar-track {
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;
+    background-color: #ededed;
+}
+
+/* The whole scrollbar element */
+.todolist::-webkit-scrollbar {
+  width: 16px;
+}
+/* CUSTOM SCROLLBAR END */
+/* -------------------------------------------------------------------------------------------------------------------*/
+/* TODOLIST */
+.todolist-global {
+    margin: 0 auto;
+    width: 65%;
+}
+
+.todolist {
+    margin: 0 auto;
+    max-height: 550px;
+    overflow-y: auto;
+    padding: 0 5px;
+    width: 50%;
+    /* CUSTOM SCROLLBAR FIREFOX */
+    scrollbar-gutter: stable;
+    scrollbar-color: #337ab7 #ededed;
+    scrollbar-width: thin;
+    /* CUSTOM SCROLLBAR FIREFOX END */
+}
+
+.todo-task {
+    background: #ededed;
+    border-radius: 30px;
+    color: #1d1d1b;
+    display: flex;
+    justify-content: space-between;
+    margin: .5em auto;
+    padding: .4em 1em;
+    width:98%;
+}
 
 .todo-task:hover {
   box-shadow: 0 0 3px rgba(0,0,0,0.3);
 }
 
+.task-icon {
+    padding:0 1px;
+}
 
-
+.task-icon:hover {
+    text-decoration: none;
+}
 
 .check-task{
-  font-size:1em;
-  color:grey;
-  cursor:pointer;
-  display:inline-block
-
+    display:inline-block;
 }
-
-.check-task:hover .fa-square:before{
-  content:"\f14a";
-  color:green;
-  opacity:0.4;
-
-}
-
 
 .check-task:hover
 {
     text-decoration: none;
 }
 
+.check-task:hover .fa-square:before{
+    color:green;
+    content:"\f14a";
+    opacity:0.4;
+}
 
 .fa-square {
     padding-right:10px;
@@ -166,12 +123,12 @@ p {
     text-decoration: none;
 }
 
-
+.completed-date {
+    color:green;
+}
+/* TODOLIST END */
+/* -------------------------------------------------------------------------------------------------------------------*/
 .footer {
     margin: 50px 0;
 }
 
-.completed-date {
-      color:green;
-
-}
