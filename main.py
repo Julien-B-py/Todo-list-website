@@ -56,10 +56,14 @@ def home():
     # If user loaded home page without submitting the form
     # Get all todos from database
     todos = Todo.query.all()
+    # For every todo check if the date_completed column is different from NULL and if so add 1 everytime
+    completed_count = sum(1 for todo in todos if todo.date_completed is not None)
+    # If completed todos amount is equal to the size of todos list, then our current todo list is empty
+    is_empty = (completed_count == len(todos))
     # Check if any todo has been completed to allow the display of "completed todos link"
     completed = any(todo.date_completed for todo in todos)
     # Pass todos and completed (kwargs) to render the html
-    return render_template('index.html', form=form, todos=todos, completed=completed)
+    return render_template('index.html', form=form, todos=todos, completed=completed, is_empty=is_empty)
 
 
 @app.route("/delete/task/<int:task_id>")

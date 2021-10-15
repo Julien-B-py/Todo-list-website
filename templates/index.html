@@ -22,9 +22,11 @@
         <h1>My todo list</h1>
         <ul class="todolist">
 
-            {% if not todos  %}
+            {% if is_empty  %}
             <p>Your todo list is empty.</p>
             {% endif %}
+
+
 
 
             {% for todo in todos%}

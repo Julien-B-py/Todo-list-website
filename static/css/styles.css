@@ -1,18 +1,27 @@
+/* HTML TAGS */
 body {
-
     max-width: 100%;
     overflow-x: hidden;
     text-align: center;
-
 }
+
+h1 {
+    text-align: center;
+    margin: 50px 0;
+}
+
+p {
+    font-size:20px;
+}
+
+
+
 
 .form {
 
 
         margin:3% 0;
-/*    position: fixed;
-    bottom: 0;
-    width: 100%;*/
+
 
 }
 
@@ -23,14 +32,7 @@ body {
 
 
 
-h1 {
-    text-align: center;
-    margin: 50px 0;
-}
 
-p {
-    font-size:20px;
-}
 
 
 .todolist-global {

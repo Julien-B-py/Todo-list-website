@@ -1,11 +1,11 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import StringField, validators
 
 
 # render_kw={'autofocus': True} to set the cursor focused in the field
-class AddTodoForm(Form):
+class AddTodoForm(FlaskForm):
     task = StringField(validators=[validators.input_required()], render_kw={'autofocus': True})
 
 
-class EditTodoForm(Form):
+class EditTodoForm(FlaskForm):
     task = StringField(validators=[validators.input_required()], render_kw={'autofocus': True})
